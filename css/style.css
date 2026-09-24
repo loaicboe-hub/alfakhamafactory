@@ -1,0 +1,467 @@
+/* ==========================================================================
+   AL FAKHAMA (HARV FRIES) - CORE DESIGN SYSTEM & STYLES
+   Ultra-Premium Frozen Par-Fried Potatoes Manufacturer & Exporter
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cairo:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-black: #060606;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-tertiary: #181818;
+  --bg-card: rgba(20, 20, 20, 0.72);
+  --bg-card-hover: rgba(28, 28, 28, 0.88);
+  --bg-glass: rgba(10, 10, 10, 0.82);
+
+  /* Metallic Gold Spectrum */
+  --gold-pure: #c9a45c;
+  --gold-light: #e6c883;
+  --gold-pale: #f2e2be;
+  --gold-dark: #917032;
+  --gold-gradient: linear-gradient(135deg, #f2e2be 0%, #c9a45c 45%, #8f6e2f 100%);
+  --gold-gradient-soft: linear-gradient(135deg, rgba(230, 200, 131, 0.15) 0%, rgba(201, 164, 92, 0.05) 100%);
+  --gold-glow: 0 0 25px rgba(201, 164, 92, 0.22);
+  --gold-glow-strong: 0 0 35px rgba(201, 164, 92, 0.45);
+
+  /* Typography Colors */
+  --text-white: #f5f5f0;
+  --text-pure-white: #ffffff;
+  --text-muted: #a3a39e;
+  --text-dim: #70706c;
+  --text-gold: #d8b26e;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-gold: rgba(201, 164, 92, 0.28);
+  --border-gold-strong: rgba(201, 164, 92, 0.6);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.85);
+  --shadow-gold: 0 10px 30px rgba(201, 164, 92, 0.15);
+
+  /* Typography Families */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ar: 'Cairo', sans-serif;
+
+  /* Layout */
+  --container-max: 1280px;
+  --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle luxury grain background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(201, 164, 92, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+  border: 2px solid var(--bg-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-white);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1.025rem;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Gold Gradient Text Utility */
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gold-accent {
+  color: var(--gold-pure);
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS & SECTION STRUCTURE
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.container-narrow {
+  max-width: 960px;
+}
+
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-darker {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-obsidian {
+  background: radial-gradient(circle at 50% 0%, #151515 0%, #080808 80%);
+}
+
+/* Section Header Component */
+.section-header {
+  margin-bottom: 4rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-header.text-left {
+  text-align: left;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold-pure);
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(201, 164, 92, 0.08);
+  border: 1px solid rgba(201, 164, 92, 0.25);
+  border-radius: 2px;
+}
+
+.section-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--gold-pure);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold-light);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.section-header.text-left .section-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ==========================================================================
+   BUTTONS & CTAS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.925rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.95rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+/* Primary Luxury Gold Button */
+.btn-gold {
+  background: var(--gold-gradient);
+  color: #000000;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(201, 164, 92, 0.25);
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+.btn-gold:hover {
+  box-shadow: 0 6px 28px rgba(201, 164, 92, 0.45);
+  transform: translateY(-2px);
+  color: #000000;
+}
+
+.btn-gold:hover::after {
+  left: 130%;
+}
+
+/* Secondary Ghost/Outline Button */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold-pure);
+  color: var(--gold-light);
+  background: rgba(201, 164, 92, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-gold-outline {
+  background: transparent;
+  color: var(--gold-pure);
+  border: 1px solid var(--gold-pure);
+}
+
+.btn-gold-outline:hover {
+  background: var(--gold-pure);
+  color: #000000;
+  box-shadow: 0 4px 18px rgba(201, 164, 92, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Button with icon */
+.btn-icon-arrow svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn-icon-arrow svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   CARDS & SURFACES
+   ========================================================================== */
+.luxury-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 2.25rem;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.luxury-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: radial-gradient(circle at top right, rgba(201, 164, 92, 0.08), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.luxury-card:hover {
+  border-color: var(--border-gold);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold), var(--shadow-md);
+}
+
+.luxury-card:hover::before {
+  opacity: 1;
+}
+
+/* Decorative Gold Corner Borders */
+.gold-corner-frame {
+  position: relative;
+}
+
+.gold-corner-frame::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--gold-pure);
+  border-right: 2px solid var(--gold-pure);
+  pointer-events: none;
+}
+
+.gold-corner-frame::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--gold-pure);
+  border-left: 2px solid var(--gold-pure);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ANIMATIONS & REVEALS
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 12px var(--gold-pure)); }
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* ==========================================================================
+   RESPONSIVE UTILITIES
+   ========================================================================== */
+@media (max-width: 991px) {
+  .section {
+    padding: 4.5rem 0;
+  }
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <rect width="900" height="200" fill="#CE1126"/>
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <rect y="400" width="900" height="200" fill="#000000"/>
+  <!-- Eagle of Saladin -->
+  <g transform="translate(450, 300) scale(0.72)">
+    <!-- Wings & Body Contour -->
+    <path d="M-55,-65 C-55,-65 -35,-88 0,-88 C35,-88 55,-65 55,-65 C68,-40 78,-10 78,30 C78,75 50,105 38,118 L32,130 L-32,130 L-38,118 C-50,105 -78,75 -78,30 C-78,-10 -68,-40 -55,-65 Z" fill="#C9A45C"/>
+    <!-- Head & Crown & Beak -->
+    <path d="M-18,-88 C-18,-110 0,-122 18,-122 C24,-122 30,-116 38,-118 L46,-110 L34,-102 C36,-96 34,-88 24,-88 Z" fill="#C9A45C"/>
+    <circle cx="16" cy="-108" r="2.5" fill="#000000"/>
+    <!-- Center Shield -->
+    <path d="M-26,-30 L26,-30 L24,45 C24,68 0,86 0,86 C0,86 -24,68 -24,45 Z" fill="#FFFFFF" stroke="#C9A45C" stroke-width="4"/>
+    <!-- Shield Tricolor Inset -->
+    <path d="M-15,-30 L-5,-30 L-5,62 C-10,56 -15,48 -15,38 Z" fill="#CE1126"/>
+    <path d="M5,-30 L15,-30 L15,38 C15,48 10,56 5,62 Z" fill="#000000"/>
+    <!-- Feet & Scroll Bar -->
+    <rect x="-48" y="125" width="96" height="18" rx="4" fill="#C9A45C"/>
+    <path d="M-35,134 L35,134" stroke="#8C6D2D" stroke-width="2"/>
+  </g>
+</svg>

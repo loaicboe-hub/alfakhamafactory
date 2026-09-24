@@ -1,0 +1,132 @@
+/* ==========================================================================
+   AL FAKHAMA (HARV FRIES) - RTL ARABIC STYLES
+   ========================================================================== */
+
+[dir="rtl"] {
+  font-family: var(--font-ar), -apple-system, BlinkMacSystemFont, sans-serif;
+  text-align: right;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] .section-title,
+[dir="rtl"] .hero-title,
+[dir="rtl"] .product-title,
+[dir="rtl"] .quality-title,
+[dir="rtl"] .why-title,
+[dir="rtl"] .brand-name {
+  font-family: var(--font-ar), sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] .hero-subtitle,
+[dir="rtl"] .section-subtitle,
+[dir="rtl"] .product-desc,
+[dir="rtl"] .quality-desc {
+  font-family: var(--font-ar), sans-serif;
+  line-height: 1.8;
+}
+
+[dir="rtl"] .section-kicker,
+[dir="rtl"] .hero-badge,
+[dir="rtl"] .product-cut-badge {
+  letter-spacing: 0.05em;
+}
+
+[dir="rtl"] .hero-subtitle {
+  border-left: none;
+  border-right: 2px solid var(--gold-pure);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
+[dir="rtl"] .section-header.text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .product-cut-badge {
+  left: auto;
+  right: 1rem;
+}
+
+[dir="rtl"] .product-spec-table td:last-child {
+  text-align: left;
+}
+
+[dir="rtl"] .product-spec-table td:first-child {
+  text-align: right;
+}
+
+
+
+[dir="rtl"] .gold-corner-frame::after {
+  right: auto;
+  left: -6px;
+  border-right: none;
+  border-left: 2px solid var(--gold-pure);
+}
+
+[dir="rtl"] .gold-corner-frame::before {
+  left: auto;
+  right: -6px;
+  border-left: none;
+  border-right: 2px solid var(--gold-pure);
+}
+
+[dir="rtl"] .footer-col-title::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .footer-links-list a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+[dir="rtl"] .trust-item {
+  border-right: none;
+  border-left: 1px solid var(--border-subtle);
+}
+
+[dir="rtl"] .trust-item:last-child {
+  border-left: none;
+}
+
+[dir="rtl"] .mobile-drawer {
+  right: auto;
+  left: -100%;
+  border-left: none;
+  border-right: 1px solid var(--border-gold);
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="rtl"] .mobile-drawer.open {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .modal-close-btn {
+  right: auto;
+  left: 1.25rem;
+}
+
+[dir="rtl"] .btn:hover .btn-icon-arrow svg {
+  transform: translateX(-4px);
+}
+
+[dir="rtl"] .floating-whatsapp {
+  right: auto;
+  left: 2rem;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .floating-whatsapp {
+    right: auto;
+    left: 1.25rem;
+  }
+}

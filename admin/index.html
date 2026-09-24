@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Fakhama (HARV FRIES) — Admin Management Portal</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <div class="admin-wrapper">
+    <!-- ========================================================================
+         SIDEBAR NAVIGATION
+         ======================================================================== -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="../" class="sidebar-brand" target="_blank" title="View Live Website">
+          <img src="../assets/images/logo.png" alt="Al Fakhama Logo" class="sidebar-logo">
+          <div class="sidebar-brand-text">
+            <span class="brand-title">AL FAKHAMA</span>
+            <span class="brand-tag">HARV FRIES • ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">MAIN MANAGEMENT</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link active" data-view="inquiries" id="nav-inquiries">
+              <span class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </span>
+              <span class="nav-text">Inquiries</span>
+              <span class="nav-badge" id="sidebarNewBadge">0</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="categories" id="nav-categories">
+              <span class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </span>
+              <span class="nav-text">Categories</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="products" id="nav-products">
+              <span class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </span>
+              <span class="nav-text">Products</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="authority" id="nav-authority">
+              <span class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="M12 8v4"></path>
+                  <circle cx="12" cy="16" r="1"></circle>
+                </svg>
+              </span>
+              <span class="nav-text">Authority & Users</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="settings" id="nav-settings">
+              <span class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              </span>
+              <span class="nav-text">General Settings</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>Hostinger MySQL Live</span>
+        </div>
+        <a href="../" target="_blank" class="sidebar-link-btn">
+          <span>View Live Portal</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ========================================================================
+         MAIN CONTENT AREA
+         ======================================================================== -->
+    <div class="admin-main">
+      <!-- Top Bar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="topbar-title-wrap">
+            <h1 class="page-current-title" id="pageTitle">Inquiries & Export Leads</h1>
+            <p class="page-current-sub" id="pageSubtitle">Manage incoming B2B quotation requests and commercial supply leads</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="admin-user-pill">
+            <div class="user-avatar">AF</div>
+            <div class="user-info">
+              <span class="user-name">Al Fakhama Admin</span>
+              <span class="user-role">Super Administrator</span>
+            </div>
+          </div>
+          <button class="btn-topbar-action" id="changeKeyBtn" title="Change Secret Key">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Key Auth</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views Container -->
+      <main class="admin-content-body">
+
+        <!-- ====================================================================
+             VIEW 1: INQUIRIES
+             ==================================================================== -->
+        <section class="admin-view active" id="view-inquiries">
+          <!-- Metrics Bar -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrap" style="background: rgba(201, 164, 92, 0.1); color: var(--gold);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-num" id="statTotal">0</div>
+                <div class="stat-label">Total Inquiries</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap" style="background: rgba(250, 204, 21, 0.1); color: #facc15;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-num" id="statNew" style="color: #facc15;">0</div>
+                <div class="stat-label">New / Unread</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap" style="background: rgba(96, 165, 250, 0.1); color: #60a5fa;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-num" id="statContacted" style="color: #60a5fa;">0</div>
+                <div class="stat-label">In Contact</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap" style="background: rgba(74, 222, 128, 0.1); color: #4ade80;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-num" id="statCompleted" style="color: #4ade80;">0</div>
+                <div class="stat-label">Completed / Closed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="table-card">
+            <div class="table-toolbar">
+              <div class="filter-group">
+                <button class="filter-pill active" data-status="all">All</button>
+                <button class="filter-pill" data-status="new">New</button>
+                <button class="filter-pill" data-status="contacted">Contacted</button>
+                <button class="filter-pill" data-status="in_progress">In Progress</button>
+                <button class="filter-pill" data-status="completed">Completed</button>
+                <button class="filter-pill" data-status="archived">Archived</button>
+              </div>
+
+              <div class="table-actions">
+                <div class="search-input-wrap">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="inquiriesSearch" placeholder="Search by name, company, country...">
+                </div>
+                <button class="btn-admin btn-admin-outline" id="refreshBtn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6"></path>
+                    <path d="M1 20v-6h6"></path>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  <span>Refresh</span>
+                </button>
+                <button class="btn-admin" id="exportCsvBtn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Export CSV</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bulk Selection & Action Bar -->
+            <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+              <div class="bulk-info">
+                <span class="bulk-check-icon">✓</span>
+                <span id="selectedCountText"><strong>0</strong> inquiries selected</span>
+              </div>
+              <div class="bulk-btns">
+                <button type="button" class="btn-admin btn-admin-danger btn-admin-sm" id="bulkDeleteBtn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                  <span>Delete Selected</span>
+                </button>
+                <button type="button" class="btn-admin btn-admin-outline btn-admin-sm" id="bulkCompleteBtn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Mark Completed</span>
+                </button>
+                <button type="button" class="btn-bulk-deselect" id="clearSelectionBtn">Deselect All</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th style="width: 44px; text-align: center;">
+                      <input type="checkbox" id="selectAllInquiries" class="admin-checkbox" title="Select All Inquiries">
+                    </th>
+                    <th>ID & Date</th>
+                    <th>Client & Business</th>
+                    <th>Contact Info</th>
+                    <th>Product Cut & Volume</th>
+                    <th>Notes / Specifications</th>
+                    <th>Lead Status</th>
+                    <th style="min-width: 175px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiriesTableBody">
+                  <tr>
+                    <td colspan="8" style="text-align: center; padding: 2.5rem; color: #a3a39e;">Loading data from Hostinger MySQL...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             VIEW 2: CATEGORIES
+             ==================================================================== -->
+        <section class="admin-view" id="view-categories">
+          <div class="section-top-actions">
+            <div>
+              <h2 class="view-heading">Cut Categories Management</h2>
+              <p class="view-subheading">Configure frozen half-fried cut categories, export standards, and product classifications</p>
+            </div>
+            <button class="btn-admin" id="addCategoryBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add New Category</span>
+            </button>
+          </div>
+
+          <div class="categories-grid" id="categoriesContainer">
+            <!-- Populated via JS -->
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             VIEW 3: PRODUCTS
+             ==================================================================== -->
+        <section class="admin-view" id="view-products">
+          <div class="section-top-actions">
+            <div>
+              <h2 class="view-heading">Product Catalog (Frozen Vegetables & Fruits)</h2>
+              <p class="view-subheading">All half-fried potato cuts are categorized under Frozen Vegetables alongside IQF vegetables and fruits</p>
+            </div>
+            <button class="btn-admin" id="addProductBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add New Product</span>
+            </button>
+          </div>
+
+          <!-- Product Category Filter Bar -->
+          <div class="table-toolbar" style="margin-bottom: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+            <div class="filter-group" id="productCatFilters">
+              <button class="filter-pill active" data-prod-cat="all">All Products</button>
+              <button class="filter-pill" data-prod-cat="Frozen Vegetables">Frozen Vegetables (All Half-Fried Potatoes & Veg)</button>
+              <button class="filter-pill" data-prod-cat="Frozen Fruits">Frozen Fruits</button>
+            </div>
+          </div>
+
+          <div class="products-grid" id="productsContainer">
+            <!-- Populated via JS -->
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             VIEW 4: GENERAL SETTINGS
+             ==================================================================== -->
+        <section class="admin-view" id="view-settings">
+          <!-- Settings Navigation Tabs -->
+          <div class="settings-subnav">
+            <button type="button" class="settings-tab-btn active" data-subtab="cms-editor">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <span>Website Content (CMS Editor)</span>
+            </button>
+            <button type="button" class="settings-tab-btn" data-subtab="company-profile">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18M3 7v14M21 7v14M6 11h2M6 15h2M16 11h2M16 15h2M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"></path>
+              </svg>
+              <span>Company Profile & Contacts</span>
+            </button>
+            <button type="button" class="settings-tab-btn" data-subtab="hostinger-db">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+              <span>Hostinger MySQL & Security</span>
+            </button>
+          </div>
+
+          <!-- PANE 1: WEBSITE CONTENT CMS EDITOR -->
+          <div class="settings-pane active" id="pane-cms-editor">
+            <div class="settings-card cms-main-card">
+              <div class="settings-card-header cms-header">
+                <div>
+                  <h3 class="settings-card-title">Live Website Content Management (Bilingual CMS)</h3>
+                  <p class="settings-card-subtitle">Edit any title, subtitle, kicker, or description across the landing page in English and Arabic. Changes sync immediately to the live site.</p>
+                </div>
+                <div class="cms-quick-actions">
+                  <a href="../" target="_blank" class="btn-admin btn-admin-sm btn-admin-outline">
+                    <span>Preview Live Site</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- CMS Section Filter Pills -->
+              <div class="cms-section-pills">
+                <button type="button" class="cms-pill active" data-cms-section="hero">🌟 Hero Section</button>
+                <button type="button" class="cms-pill" data-cms-section="about">🏢 About Us</button>
+                <button type="button" class="cms-pill" data-cms-section="products">🍟 Products Header</button>
+                <button type="button" class="cms-pill" data-cms-section="quality">🛡️ Quality Assurance</button>
+                <button type="button" class="cms-pill" data-cms-section="process">⚙️ Manufacturing Process</button>
+                <button type="button" class="cms-pill" data-cms-section="why">🏆 Why Choose Us</button>
+                <button type="button" class="cms-pill" data-cms-section="contact">📩 Contact, RFQ & Footer</button>
+              </div>
+
+              <form id="cmsContentForm" class="cms-form">
+                <!-- 1. HERO SECTION -->
+                <div class="cms-section-panel active" id="cms-panel-hero">
+                  <div class="cms-panel-heading">
+                    <h4>Hero Banner & Specifications</h4>
+                    <span class="cms-section-badge">Main Screen</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Top Highlight Badge (Kicker)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroBadge" class="form-input" placeholder="Export-Grade Frozen Food Manufacturer">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroBadge" class="form-input ar-input" dir="rtl" placeholder="مصنع متخصص في تجميد وتصدير الأغذية">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Main Heading Line 1</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroTitleLine1" class="form-input" placeholder="Premium Frozen">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroTitleLine1" class="form-input ar-input" dir="rtl" placeholder="بطاطس نصف مقلية">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Main Heading Line 2 (Gold Accent)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroTitleLine2" class="form-input" placeholder="Par-Fried Potatoes">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroTitleLine2" class="form-input ar-input" dir="rtl" placeholder="فائقة الجودة للتصدير">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Hero Subtitle & Value Proposition</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_heroSubtitle" class="form-textarea" rows="3" placeholder="Consistent quality. Exceptional taste. Built for professional food businesses and global export."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_heroSubtitle" class="form-textarea ar-input" rows="3" dir="rtl" placeholder="جودة تصنيعية ثابتة ومذاق استثنائي لتلبية احتياجات قطاعات الأغذية والفنادق والتصدير الدولي."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Action Buttons (Explore / Request Quote)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroExploreBtn" class="form-input" placeholder="Explore Our Products" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_heroQuoteBtn" class="form-input" placeholder="Request a Quote">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroExploreBtn" class="form-input ar-input" dir="rtl" placeholder="استكشف منتجاتنا" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_heroQuoteBtn" class="form-input ar-input" dir="rtl" placeholder="اطلب عرض أسعار">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Spec Highlight 1 (Preservation Tech)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroSpec1Value" class="form-input" placeholder="IQF Frozen" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_heroSpec1Label" class="form-input" placeholder="Preservation Tech">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroSpec1Value" class="form-input ar-input" dir="rtl" placeholder="تجميد فردي IQF" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_heroSpec1Label" class="form-input ar-input" dir="rtl" placeholder="تقنية الحفظ">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Spec Highlight 2 (Processing Base)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroSpec2Value" class="form-input" placeholder="Par-Fried" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_heroSpec2Label" class="form-input" placeholder="Half-Fried Base">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroSpec2Value" class="form-input ar-input" dir="rtl" placeholder="نصف مقلية" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_heroSpec2Label" class="form-input ar-input" dir="rtl" placeholder="أساس التصنيع">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Spec Highlight 3 (Export & Cuts)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_heroSpec3Value" class="form-input" placeholder="B2B Export" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_heroSpec3Label" class="form-input" placeholder="Custom Cuts & Packaging">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_heroSpec3Value" class="form-input ar-input" dir="rtl" placeholder="تصدير كبرى الشحنات" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_heroSpec3Label" class="form-input ar-input" dir="rtl" placeholder="مقاسات وتعبئة مخصصة">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. ABOUT US SECTION -->
+                <div class="cms-section-panel" id="cms-panel-about">
+                  <div class="cms-panel-heading">
+                    <h4>About Us & Company Overview</h4>
+                    <span class="cms-section-badge">Section 2</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_aboutKicker" class="form-input" placeholder="About Al Fakhama" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_aboutTitle" class="form-input" placeholder="Built Around Quality & Precision">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_aboutKicker" class="form-input ar-input" dir="rtl" placeholder="عن شركة الفخامة" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_aboutTitle" class="form-input ar-input" dir="rtl" placeholder="صرح صناعي يقوم على الجودة والدقة">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Lead Summary (First Highlight Paragraph)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_aboutLead" class="form-textarea" rows="3" placeholder="Al Fakhama specializes in the manufacturing, processing, and freezing of high-grade par-fried (half-fried) French fries."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_aboutLead" class="form-textarea ar-input" rows="3" dir="rtl" placeholder="شركة الفخامة صرح صناعي رائد متخصص في تصنيع ومعالجة وتجميد البطاطس النصف مقلية بأحدث المعايير الدولية."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Detail Paragraph (Second Paragraph)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_aboutP1" class="form-textarea" rows="3" placeholder="Our focus is centered on processing consistency, strict potato selection, and modern freezing methods to supply professional kitchens..."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_aboutP1" class="form-textarea ar-input" rows="3" dir="rtl" placeholder="ينصب تركيزنا على ثبات الجودة، والاختيار الدقيق لأصناف البطاطس، وتقنيات التجميد السريع لتزويد كبرى سلاسل المطاعم..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. PRODUCTS HEADER SECTION -->
+                <div class="cms-section-panel" id="cms-panel-products">
+                  <div class="cms-panel-heading">
+                    <h4>Products Section Header & Category Labels</h4>
+                    <span class="cms-section-badge">Section 3</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Products Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_productsKicker" class="form-input" placeholder="Our Products" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_productsTitle" class="form-input" placeholder="Export-Grade Frozen Vegetables & Fruits">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_productsKicker" class="form-input ar-input" dir="rtl" placeholder="منتجاتنا" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_productsTitle" class="form-input ar-input" dir="rtl" placeholder="خضروات وفواكه مجمدة مخصصة للتصدير">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Products Section Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_productsSubtitle" class="form-textarea" rows="3" placeholder="Industrial IQF half-fried potatoes, farm-fresh vegetables, and premium Egyptian fruits engineered for global food service."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_productsSubtitle" class="form-textarea ar-input" rows="3" dir="rtl" placeholder="بطاطس نصف مقلية بتقنية IQF، خضروات طازجة مجمدة، وفواكه مصرية فاخرة مجهزة لقطاعات الأغذية العالمية."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Category Menu Dropdown Labels</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_catSelectLabel" class="form-input" placeholder="Browse by Category:" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_menuFrozenVeg" class="form-input" placeholder="Frozen Vegetables" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_menuFrozenFruits" class="form-input" placeholder="Frozen Fruits">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_catSelectLabel" class="form-input ar-input" dir="rtl" placeholder="تصفح حسب القسم:" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_menuFrozenVeg" class="form-input ar-input" dir="rtl" placeholder="الخضروات والبطاطس المجمدة" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_menuFrozenFruits" class="form-input ar-input" dir="rtl" placeholder="الفواكه المجمدة">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. QUALITY ASSURANCE SECTION -->
+                <div class="cms-section-panel" id="cms-panel-quality">
+                  <div class="cms-panel-heading">
+                    <h4>Quality Assurance & Industrial Standards</h4>
+                    <span class="cms-section-badge">Section 4</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_qualityKicker" class="form-input" placeholder="Quality Assurance" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_qualityTitle" class="form-input" placeholder="Quality You Can Count On">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_qualityKicker" class="form-input ar-input" dir="rtl" placeholder="ضمان الجودة" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_qualityTitle" class="form-input ar-input" dir="rtl" placeholder="معايير جودة راسخة في كل مرحلة">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_qualitySubtitle" class="form-textarea" rows="2" placeholder="Our manufacturing and sorting parameters ensure every delivery meets commercial food service expectations."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_qualitySubtitle" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تضمن معايير الفرز والتصنيع الصارمة لدينا توريد منتجات تتطابق مع متطلبات أكبر المطاعم وشركات الأغذية."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Pillar 1: Raw Material Sorting</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_q1Title" class="form-input" placeholder="Raw Material Sorting" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_q1Desc" class="form-textarea" rows="2" placeholder="Stringent sorting protocols ensure only defect-free potatoes with optimal solid content enter processing."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_q1Title" class="form-input ar-input" dir="rtl" placeholder="فرز دقيق للمواد الخام" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_q1Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="فرز آلي وميكانيكي يستبعد العيوب ويضمن ثبات نسبة المادة الجافة والصلابة."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Pillar 2: Blanching & Pre-Frying</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_q2Title" class="form-input" placeholder="Blanching & Pre-Frying" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_q2Desc" class="form-textarea" rows="2" placeholder="Continuous temperature-monitored blanching reduces surface starches and locks in structural crunch."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_q2Title" class="form-input ar-input" dir="rtl" placeholder="سلق وقلي نصف محسوب" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_q2Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="سلق متواصل لإزالة النشا الزائد يتبعه قلي جزئي يمنح القشرة الخارجية قرمشتها المثالية."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Pillar 3: Ultra-Rapid IQF Freezing</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_q3Title" class="form-input" placeholder="Ultra-Rapid IQF Freezing" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_q3Desc" class="form-textarea" rows="2" placeholder="Flash freezing at -35°C ensures rapid crystallization without cell wall damage."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_q3Title" class="form-input ar-input" dir="rtl" placeholder="تجميد فردي فائق السرعة" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_q3Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تجميد صاعق عند -35°م يحافظ على تماسك الخلايا ونكهة البطاطس الطبيعية دون تكتل."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Pillar 4: Food Safety Compliance</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_q4Title" class="form-input" placeholder="Food Safety Compliance" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_q4Desc" class="form-textarea" rows="2" placeholder="Adherence to HACCP and ISO food safety frameworks guarantees trace-certified output."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_q4Title" class="form-input ar-input" dir="rtl" placeholder="أمان غذائي وشهادات دولية" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_q4Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تطبيق كامل لأنظمة الهاسب ومعايير الأيزو لضمان مطابقة الشحنات لاشتراطات التصدير."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. MANUFACTURING PROCESS SECTION -->
+                <div class="cms-section-panel" id="cms-panel-process">
+                  <div class="cms-panel-heading">
+                    <h4>Manufacturing Workflow & Factory Steps</h4>
+                    <span class="cms-section-badge">Section 5</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_processKicker" class="form-input" placeholder="Manufacturing Workflow" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_processTitle" class="form-input" placeholder="State-of-the-Art Processing Line">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_processKicker" class="form-input ar-input" dir="rtl" placeholder="مراحل الإنتاج" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_processTitle" class="form-input ar-input" dir="rtl" placeholder="خط إنتاج متكامل بأعلى التقنيات">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_processSubtitle" class="form-textarea" rows="2" placeholder="From farm harvesting to deep freezing, every batch passes through automated processing stages."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_processSubtitle" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="من الحصاد الزراعي حتى التجميد النهائي، تمر الشحنات بمراحل آلية فائقة الدقة."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 1: Washing & Peeling</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step1Title" class="form-input" placeholder="Washing & Peeling" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step1Desc" class="form-input" placeholder="Multi-stage destoning and gentle steam peeling.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step1Title" class="form-input ar-input" dir="rtl" placeholder="الغسيل والتقشير" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step1Desc" class="form-input ar-input" dir="rtl" placeholder="إزالة الشوائب والتقشير البخاري اللطيف.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 2: Precision Hydro-Cutting</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step2Title" class="form-input" placeholder="Precision Hydro-Cutting" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step2Desc" class="form-input" placeholder="Water-jet knives cut uniform lengths (7mm, 9mm, 12mm).">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step2Title" class="form-input ar-input" dir="rtl" placeholder="التقطيع المائي الدقيق" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step2Desc" class="form-input ar-input" dir="rtl" placeholder="سكاكين مائية فائقة السرعة تضمن دقة مقاسات التقطيع.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 3: Blanching</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step3Title" class="form-input" placeholder="Blanching" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step3Desc" class="form-input" placeholder="Controlled two-stage blanching stabilizes color.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step3Title" class="form-input ar-input" dir="rtl" placeholder="السلق والتهيئة" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step3Desc" class="form-input ar-input" dir="rtl" placeholder="سلق بدرجات حرارة محسوبة للحفاظ على اللون الذهبي الموحد.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 4: Controlled Par-Frying</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step4Title" class="form-input" placeholder="Controlled Par-Frying" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step4Desc" class="form-input" placeholder="Flash par-frying in refined pure vegetable oils.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step4Title" class="form-input ar-input" dir="rtl" placeholder="القلي الجزئي المبرمج" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step4Desc" class="form-input ar-input" dir="rtl" placeholder="قلي نصف سريع في زيوت نباتية عالية النقاء.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 5: IQF Freezing</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step5Title" class="form-input" placeholder="IQF Freezing" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step5Desc" class="form-input" placeholder="Tunnel freezing at -35°C locks in exterior crispness.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step5Title" class="form-input ar-input" dir="rtl" placeholder="التجميد الفردي السريع" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step5Desc" class="form-input ar-input" dir="rtl" placeholder="نفق تجميد صاعق عند -35°م يمنع التصاق الحبات.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Step 6: Packaging & Cold Storage</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_step6Title" class="form-input" placeholder="Packaging & Cold Storage" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_step6Desc" class="form-input" placeholder="Multi-layer protective barrier packaging stored at -18°C.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_step6Title" class="form-input ar-input" dir="rtl" placeholder="التعبئة والتخزين المبرد" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_step6Desc" class="form-input ar-input" dir="rtl" placeholder="تعبئة آلية في أكياس عازلة مع تخزين مستمر عند -18°م.">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6. WHY CHOOSE US SECTION -->
+                <div class="cms-section-panel" id="cms-panel-why">
+                  <div class="cms-panel-heading">
+                    <h4>Why Choose Al Fakhama (Core Advantages)</h4>
+                    <span class="cms-section-badge">Section 6</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_whyKicker" class="form-input" placeholder="Core Advantages" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_whyTitle" class="form-input" placeholder="Why Partners Choose Al Fakhama">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_whyKicker" class="form-input ar-input" dir="rtl" placeholder="مزايانا التنافسية" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_whyTitle" class="form-input ar-input" dir="rtl" placeholder="لماذا يختارنا شركاء التوريد والتصدير">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Section Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_whySubtitle" class="form-textarea" rows="2" placeholder="We provide consistency, volume capability, and personalized cut specifications for major contracts."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_whySubtitle" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="نوفر ثباتاً تصنيعياً وطاقات إنتاجية ضخمة ومواصفات تقطيع وتعبئة مخصصة لكبرى العقود."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Advantage 1: Strict Quality Control</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_why1Title" class="form-input" placeholder="Strict Quality Control" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_why1Desc" class="form-textarea" rows="2" placeholder="End-to-end monitoring from seed to carton ensures consistent fryer performance."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_why1Title" class="form-input ar-input" dir="rtl" placeholder="رقابة صارمة على الجودة" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_why1Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تتبع شامل لخط الإنتاج يضمن أداءً موحداً وسرعة في القلي النهائي."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Advantage 2: Modern IQF Freezing</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_why2Title" class="form-input" placeholder="Modern IQF Freezing" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_why2Desc" class="form-textarea" rows="2" placeholder="Advanced freezing tunnels keep fries separated, easy to portion without clumping."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_why2Title" class="form-input ar-input" dir="rtl" placeholder="تجميد فردي IQF متطور" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_why2Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تكنولوجيا تجميد تمنع تكتل الحبات وتسهل التحكم بالكميات في المطاعم."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Advantage 3: B2B Contract Flexibility</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_why3Title" class="form-input" placeholder="B2B Contract Flexibility" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_why3Desc" class="form-textarea" rows="2" placeholder="Private labeling, bespoke packaging weights, and flexible shipping schedules."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_why3Title" class="form-input ar-input" dir="rtl" placeholder="مرونة في عقود التوريد" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_why3Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="إمكانية التصنيع بعلامات تجارية خاصة وتعبئة بأوزان متنوعة مع جداول شحن مرنة."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Advantage 4: Continuous Export Supply</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_why4Title" class="form-input" placeholder="Continuous Export Supply" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_why4Desc" class="form-textarea" rows="2" placeholder="Robust logistics network to ensure seamless distribution to local and regional markets."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_why4Title" class="form-input ar-input" dir="rtl" placeholder="استمرارية الإمداد والتصدير" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_why4Desc" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="شبكة لوجستية مبردة تضمن وصول الشحنات بكامل جودتها دون انقطاع."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 7. CONTACT, RFQ & FOOTER SECTION -->
+                <div class="cms-section-panel" id="cms-panel-contact">
+                  <div class="cms-panel-heading">
+                    <h4>Contact, RFQ Inquiries & Footer Legal Text</h4>
+                    <span class="cms-section-badge">Section 7 & Footer</span>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Contact Header Kicker & Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_contactKicker" class="form-input" placeholder="Commercial Inquiries" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_contactTitle" class="form-input" placeholder="Request an Export Quotation">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_contactKicker" class="form-input ar-input" dir="rtl" placeholder="طلبات عروض الأسعار" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_contactTitle" class="form-input ar-input" dir="rtl" placeholder="اطلب عرض أسعار فوري لتوريد شحنتك">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Contact Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_contactSubtitle" class="form-textarea" rows="2" placeholder="Connect directly with our export sales team for container pricing, custom specifications, and FOB/CIF terms."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_contactSubtitle" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="تواصل مباشرة مع فريق المبيعات والتصدير للحصول على أسعار الحاويات وتفاصيل الشحن والتوريد."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Company Information Column Title</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_infoTitle" class="form-input" placeholder="Company Information">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_infoTitle" class="form-input ar-input" dir="rtl" placeholder="بيانات الشركة">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">RFQ Form Heading & Subtitle</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_rfqTitle" class="form-input" placeholder="Request a Supply Quote" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_rfqSubtitle" class="form-input" placeholder="Configure your preferred cut size, volume, and destination.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_rfqTitle" class="form-input ar-input" dir="rtl" placeholder="طلب عرض أسعار توريد (B2B)" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_rfqSubtitle" class="form-input ar-input" dir="rtl" placeholder="حدد مقاس التقطيع والكمية التقديرية وبلد التوريد أو التصدير.">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Pre-Footer Call-to-Action (CTA Banner)</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_ctaTitle" class="form-input" placeholder="Looking for a Reliable Frozen Potato Supplier?" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_en_ctaSubtitle" class="form-textarea" rows="2" placeholder="Let's discuss your volume requirements, cut preferences, and create the right frozen supply program for your business." style="margin-bottom: 0.5rem;"></textarea>
+                        <input type="text" id="cms_en_ctaQuoteBtn" class="form-input" placeholder="Request B2B Quote" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_en_ctaContactBtn" class="form-input" placeholder="Contact Our Sales Team">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_ctaTitle" class="form-input ar-input" dir="rtl" placeholder="تبحث عن مورد موثوق للبطاطس النصف مقلية المجمدة؟" style="margin-bottom: 0.5rem;">
+                        <textarea id="cms_ar_ctaSubtitle" class="form-textarea ar-input" rows="2" dir="rtl" placeholder="دعنا نناقش متطلبات الكميات ومقاسات التقطيع وتفاصيل التوريد الأنسب لشركتك." style="margin-bottom: 0.5rem;"></textarea>
+                        <input type="text" id="cms_ar_ctaQuoteBtn" class="form-input ar-input" dir="rtl" placeholder="طلب عرض توريد B2B" style="margin-bottom: 0.5rem;">
+                        <input type="text" id="cms_ar_ctaContactBtn" class="form-input ar-input" dir="rtl" placeholder="تواصل مع فريق المبيعات">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Footer Brand Description</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <textarea id="cms_en_footerDesc" class="form-textarea" rows="3" placeholder="Al Fakhama (HARV FRIES) is a dedicated manufacturer of premium frozen par-fried French fries..."></textarea>
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <textarea id="cms_ar_footerDesc" class="form-textarea ar-input" rows="3" dir="rtl" placeholder="شركة الفخامة (هارف فرايز) مصنع متخصص في إنتاج وتجميد البطاطس النصف مقلية لخدمة قطاعات الضيافة..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cms-field-block">
+                    <label class="cms-field-label">Footer Copyright Text</label>
+                    <div class="cms-bilingual-row">
+                      <div class="cms-input-col">
+                        <span class="lang-tag en">EN</span>
+                        <input type="text" id="cms_en_footerRights" class="form-input" placeholder="© 2026 Al Fakhama (HARV FRIES). All rights reserved.">
+                      </div>
+                      <div class="cms-input-col">
+                        <span class="lang-tag ar">AR</span>
+                        <input type="text" id="cms_ar_footerRights" class="form-input ar-input" dir="rtl" placeholder="© 2026 شركة الفخامة (HARV FRIES). جميع الحقوق محفوظة.">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CMS Action Footer -->
+                <div class="cms-actions-footer">
+                  <button type="submit" class="btn-admin btn-save-cms">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                      <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                      <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span>Save Website Content</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- PANE 2: COMPANY PROFILE -->
+          <div class="settings-pane" id="pane-company-profile">
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <h3 class="settings-card-title">Company Profile & Official Contacts</h3>
+                <p class="settings-card-subtitle">These details are reflected across the website, quotation emails, and WhatsApp leads.</p>
+              </div>
+              <form id="generalSettingsForm" class="settings-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="settingCompanyName">Company Legal Name</label>
+                    <input type="text" id="settingCompanyName" class="form-input" value="Al Fakhama for Potato Manufacturing & Freezing S.A.E.">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="settingBrandName">Brand Name</label>
+                    <input type="text" id="settingBrandName" class="form-input" value="HARV FRIES (هارف فرايز)">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="settingEmail">Official Business Email</label>
+                    <input type="email" id="settingEmail" class="form-input" value="info@alfakhama-fries.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="settingPhone">Direct Phone Line</label>
+                    <input type="text" id="settingPhone" class="form-input" value="+20 106 261 7150">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="settingWhatsApp">WhatsApp Business Direct (Digits Only)</label>
+                    <input type="text" id="settingWhatsApp" class="form-input" value="201062617150">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="settingLocation">Factory Location & Origin</label>
+                    <input type="text" id="settingLocation" class="form-input" value="Egypt (Industrial Food Processing Zone)">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="settingFacebook">Official Facebook URL</label>
+                  <input type="url" id="settingFacebook" class="form-input" value="https://www.facebook.com/HARVFRIES?utm_source=ig&utm_medium=social&utm_content=link_in_bio">
+                </div>
+
+                <div class="settings-footer">
+                  <button type="submit" class="btn-admin">Save Company Settings</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- PANE 3: HOSTINGER DATABASE -->
+          <div class="settings-pane" id="pane-hostinger-db">
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <h3 class="settings-card-title">Hostinger MySQL & API Security</h3>
+                <p class="settings-card-subtitle">Database configuration settings and REST API authorization parameters.</p>
+              </div>
+              <form id="dbSettingsForm" class="settings-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="settingDbHost">Database Host</label>
+                    <input type="text" id="settingDbHost" class="form-input" value="localhost" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="settingDbName">Database Name</label>
+                    <input type="text" id="settingDbName" class="form-input" value="alfakhama_rfq_db">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="settingDbUser">Database User</label>
+                    <input type="text" id="settingDbUser" class="form-input" value="root">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="settingAdminKey">Admin Secret Key</label>
+                    <input type="text" id="settingAdminKey" class="form-input" value="Alfakhama2026@GoldFries">
+                  </div>
+                </div>
+
+                <div class="settings-footer" style="display: flex; gap: 1rem; align-items: center;">
+                  <button type="submit" class="btn-admin">Update Auth Key</button>
+                  <button type="button" class="btn-admin btn-admin-outline" id="testDbBtn">Test MySQL Connection</button>
+                  <span id="dbTestStatus" style="font-size: 0.85rem; color: var(--gold);"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             VIEW 5: AUTHORITY & USER ACCESS CONTROL
+             ==================================================================== -->
+        <section class="admin-view" id="view-authority">
+          <!-- Authority Quick Header -->
+          <div class="authority-header-bar">
+            <div>
+              <h2 class="authority-headline">System Authority & Role Permissions</h2>
+              <p class="authority-subtext">Manage authorized user accounts, grant Super Administrator privileges, and configure login credentials.</p>
+            </div>
+            <button type="button" class="btn-admin" id="openAddUserBtn" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
+              <span>+ Add User / Super Admin</span>
+            </button>
+          </div>
+
+          <!-- Top Grid: Current Admin Profile & Password Reset -->
+          <div class="authority-grid-top">
+            <!-- Card 1: Admin Profile & Credentials -->
+            <div class="authority-card">
+              <div class="authority-card-header">
+                <div class="authority-icon-wrap" style="background: rgba(201, 164, 92, 0.15); color: var(--gold);">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="authority-card-title">My Admin Account & Profile</h3>
+                  <p class="authority-card-sub">Update your active administrator username, display title, and contact email.</p>
+                </div>
+              </div>
+
+              <form id="adminProfileForm" class="authority-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="adminProfileName">Display Full Name</label>
+                    <input type="text" id="adminProfileName" class="form-input" required value="Al Fakhama Admin">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="adminProfileUsername">Username (Login ID)</label>
+                    <input type="text" id="adminProfileUsername" class="form-input" required value="admin">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="adminProfileEmail">Business Email</label>
+                    <input type="email" id="adminProfileEmail" class="form-input" required value="admin@alfakhama-fries.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Role Status</label>
+                    <div style="display: flex; align-items: center; height: 42px; gap: 0.5rem;">
+                      <span class="role-badge role-badge-super">👑 Super Administrator</span>
+                      <span style="font-size: 0.8rem; color: #4ade80;">● Active Session</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                  <button type="submit" class="btn-admin">Save Profile Details</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Card 2: Password Reset / Change for Admin -->
+            <div class="authority-card">
+              <div class="authority-card-header">
+                <div class="authority-icon-wrap" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="authority-card-title">Reset Admin Password</h3>
+                  <p class="authority-card-sub">Change the primary access password for the Super Admin account.</p>
+                </div>
+              </div>
+
+              <form id="adminPasswordForm" class="authority-form">
+                <div class="form-group">
+                  <label class="form-label" for="adminCurrentPassword">Current Password / Master Key</label>
+                  <div class="password-input-group">
+                    <input type="password" id="adminCurrentPassword" class="form-input" required placeholder="Enter current admin password">
+                    <button type="button" class="btn-toggle-pass" data-target="adminCurrentPassword" title="Show/Hide">👁️</button>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="adminNewPassword">New Password</label>
+                    <div class="password-input-group">
+                      <input type="password" id="adminNewPassword" class="form-input" required minlength="6" placeholder="At least 6 characters">
+                      <button type="button" class="btn-toggle-pass" data-target="adminNewPassword" title="Show/Hide">👁️</button>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="adminConfirmPassword">Confirm New Password</label>
+                    <div class="password-input-group">
+                      <input type="password" id="adminConfirmPassword" class="form-input" required minlength="6" placeholder="Repeat new password">
+                      <button type="button" class="btn-toggle-pass" data-target="adminConfirmPassword" title="Show/Hide">👁️</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 1rem; display: flex; justify-content: flex-end; align-items: center; gap: 1rem;">
+                  <span id="passChangeStatus" style="font-size: 0.85rem;"></span>
+                  <button type="submit" class="btn-admin" style="background: linear-gradient(135deg, #c9a45c, #e6c883); color: #080808; font-weight: 600;">Update Admin Password</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bottom: Authorized Users & Roles Table -->
+          <div class="authority-card" style="margin-top: 1.5rem;">
+            <div class="authority-card-header" style="justify-content: space-between; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <div class="authority-icon-wrap" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="authority-card-title">All System Administrators & Roles</h3>
+                  <p class="authority-card-sub">Active members with authorized access to the Al Fakhama management portal.</p>
+                </div>
+              </div>
+              <span class="badge-count" id="usersCountBadge">1 Active User</span>
+            </div>
+
+            <div class="table-responsive" style="margin-top: 1rem;">
+              <table class="admin-table" id="usersTable">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Username</th>
+                    <th>Email Address</th>
+                    <th>Role / Authority</th>
+                    <th>Status</th>
+                    <th>Created On</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODALS: CATEGORY & PRODUCT MODALS
+       ========================================================================== -->
+  <!-- Category Modal -->
+  <div class="admin-modal-backdrop" id="categoryModal">
+    <div class="admin-modal-card">
+      <button class="modal-close" id="closeCatModal">&times;</button>
+      <h3 class="modal-title" id="catModalTitle">Add Cut Category</h3>
+      <form id="catForm" class="admin-modal-form">
+        <input type="hidden" id="catId">
+        <div class="form-group">
+          <label class="form-label">Category Title</label>
+          <input type="text" id="catTitle" class="form-input" required placeholder="e.g. Frozen Vegetables, Frozen Fruits, Shoestring Cut">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Specifications / Cut Dimensions</label>
+          <input type="text" id="catCut" class="form-input" required placeholder="e.g. IQF Grade A / Whole & Mixed Cuts / 7x7 mm">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description / Ideal Culinary Application</label>
+          <textarea id="catDesc" class="form-textarea" required placeholder="Description of this cut profile, crispness, and use in food service..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Export Classification Status</label>
+          <select id="catStatus" class="form-select">
+            <option value="Active Export Grade">Active Export Grade</option>
+            <option value="Seasonal / On Demand">Seasonal / On Demand</option>
+            <option value="Private Label Only">Private Label Only</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <button type="submit" class="btn-admin" style="flex: 1;">Save Category</button>
+          <button type="button" class="btn-admin btn-admin-outline" id="cancelCatModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="admin-modal-backdrop" id="productModal">
+    <div class="admin-modal-card">
+      <button class="modal-close" id="closeProdModal" type="button">&times;</button>
+      <h3 class="modal-title" id="prodModalTitle">Add Product Cut</h3>
+      <form id="prodForm" class="admin-modal-form">
+        <input type="hidden" id="prodId">
+        
+        <!-- Row 1: Name & Category -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="prodName">Product Name</label>
+            <input type="text" id="prodName" class="form-input" required placeholder="e.g. Frozen Par-Fried Shoestring">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prodCategory">Category</label>
+            <select id="prodCategory" class="form-select">
+              <option value="Frozen Vegetables">Frozen Vegetables (All Half-Fried Potatoes & Veg)</option>
+              <option value="Frozen Fruits">Frozen Fruits</option>
+              <option value="Custom Private Label">Custom Private Label</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: Cut Dimension & Processing Method -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="prodCut">Cut Dimension / Presentation</label>
+            <input type="text" id="prodCut" class="form-input" required placeholder="e.g. 7x7 mm or Whole Calibrated">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prodType">Processing Method</label>
+            <input type="text" id="prodType" class="form-input" value="Par-Fried (Half-Fried) IQF" required>
+          </div>
+        </div>
+
+        <!-- Row 3: Frying Parameters & Storage -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="prodFryTime">Frying Parameters / Prep</label>
+            <input type="text" id="prodFryTime" class="form-input" value="2.5 - 3.0 min @ 175°C (350°F)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prodStorage">Storage Temperature</label>
+            <input type="text" id="prodStorage" class="form-input" value="-18°C (-0.4°F) Deep Frozen" required>
+          </div>
+        </div>
+
+        <!-- Row 4: Packaging -->
+        <div class="form-group">
+          <label class="form-label" for="prodPkg">Packaging Specification</label>
+          <input type="text" id="prodPkg" class="form-input" value="4x 2.5kg Polybags / 10kg Master Carton" required>
+        </div>
+
+        <!-- Row 5: Product Image Uploader & Factory Presets -->
+        <div class="form-group">
+          <label class="form-label">Product Image</label>
+          <input type="hidden" id="prodImg" value="../assets/images/cut_classic_9mm.jpg">
+          
+          <div class="product-image-uploader-box">
+            <div class="image-preview-area" id="prodImgPreviewArea" title="Current Image Preview">
+              <img id="prodImgPreview" src="../assets/images/cut_classic_9mm.jpg" alt="Product Preview" onerror="this.onerror=null; this.src='../assets/images/cut_classic_9mm.jpg';">
+            </div>
+            <div class="image-upload-controls">
+              <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                <label class="btn-admin btn-admin-sm btn-upload-label" for="prodImgFileInput" style="cursor: pointer; margin: 0;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span>Upload Image File</span>
+                </label>
+                <input type="file" id="prodImgFileInput" accept="image/jpeg,image/png,image/webp,image/jpg" style="display: none;">
+                <span id="uploadFileName" style="font-size: 0.78rem; color: var(--gold-light); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+              </div>
+
+              <div class="preset-select-wrap">
+                <span style="font-size: 0.76rem; color: var(--text-muted);">Or pick a factory image:</span>
+                <select id="prodImgPreset" class="form-select" style="padding: 0.45rem 0.75rem; font-size: 0.82rem;">
+                  <option value="../assets/images/cut_shoestring_6mm.jpg">Shoestring 7x7mm Cut (.jpg)</option>
+                  <option value="../assets/images/cut_classic_9mm.jpg">Classic 9x9mm Cut (.jpg)</option>
+                  <option value="../assets/images/cut_thick_10mm.jpg">Steak Cut 12x12mm (.jpg)</option>
+                  <option value="../assets/images/cut_crinkle_wedges.jpg">Half-Fried Crinkle Cut & Golden Wedges (.jpg)</option>
+                  <option value="../assets/images/frozen_vegetables.jpg">IQF Mixed Vegetables & Peas (.jpg)</option>
+                  <option value="../assets/images/frozen_strawberries.jpg">IQF Egyptian Whole Strawberries (.jpg)</option>
+                  <option value="../assets/images/frozen_mango.jpg">IQF Mango Slices & Chunks (.jpg)</option>
+                  <option value="../assets/images/packaging_bags.jpg">Export Master Packaging & Bags (.jpg)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 6: Description -->
+        <div class="form-group">
+          <label class="form-label" for="prodDesc">Commercial Description</label>
+          <textarea id="prodDesc" class="form-textarea" required placeholder="Commercial B2B specifications, yield advantages, starch grading..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button type="submit" class="btn-admin" style="flex: 1;">Save Product Cut</button>
+          <button type="button" class="btn-admin btn-admin-outline" id="cancelProdModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODALS: AUTHORITY (ADD USER & RESET PASSWORD)
+       ========================================================================== -->
+  <!-- Add User / Super Admin Modal -->
+  <div class="admin-modal-backdrop" id="addUserModal">
+    <div class="admin-modal-card" style="max-width: 580px;">
+      <button class="modal-close" id="closeAddUserModal">&times;</button>
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem;">
+        <span style="font-size: 1.5rem;">👑</span>
+        <h3 class="modal-title" style="margin-bottom: 0;">Add User / Super Admin</h3>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Create a new administrative user with specific access privileges and credentials.</p>
+
+      <form id="addUserForm" class="admin-modal-form">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="newUserName">Full Name *</label>
+            <input type="text" id="newUserName" class="form-input" required placeholder="e.g. Karim El-Sayed">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newUserUsername">Username (Login ID) *</label>
+            <input type="text" id="newUserUsername" class="form-input" required placeholder="e.g. karim.export">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="newUserEmail">Email Address *</label>
+            <input type="email" id="newUserEmail" class="form-input" required placeholder="karim@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newUserRole">Authority Role *</label>
+            <select id="newUserRole" class="form-select" required>
+              <option value="super_admin">👑 Super Administrator (Full Control)</option>
+              <option value="admin">🛡️ Commercial Admin (Inquiries & Leads)</option>
+              <option value="editor">✏️ Catalog Editor (Products & Content)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="newUserPassword">Initial Password *</label>
+            <div class="password-input-group">
+              <input type="password" id="newUserPassword" class="form-input" required minlength="6" placeholder="Min. 6 chars">
+              <button type="button" class="btn-toggle-pass" data-target="newUserPassword" title="Show/Hide">👁️</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newUserConfirmPassword">Confirm Password *</label>
+            <div class="password-input-group">
+              <input type="password" id="newUserConfirmPassword" class="form-input" required minlength="6" placeholder="Repeat password">
+              <button type="button" class="btn-toggle-pass" data-target="newUserConfirmPassword" title="Show/Hide">👁️</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <button type="submit" class="btn-admin" style="flex: 1; justify-content: center;">Create Administrator</button>
+          <button type="button" class="btn-admin btn-admin-outline" id="cancelAddUserModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reset User Password Modal -->
+  <div class="admin-modal-backdrop" id="resetUserPasswordModal">
+    <div class="admin-modal-card" style="max-width: 480px;">
+      <button class="modal-close" id="closeResetUserPassModal">&times;</button>
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem;">
+        <span style="font-size: 1.5rem;">🔑</span>
+        <h3 class="modal-title" style="margin-bottom: 0;">Reset User Password</h3>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">Assign a new password for this administrative user account.</p>
+
+      <div id="resetUserBanner" style="padding: 0.75rem 1rem; border-radius: var(--radius); background: var(--bg-card-hover); border: 1px solid var(--border-gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.85rem;">
+        <div id="resetUserAvatar" style="width: 38px; height: 38px; border-radius: 50%; background: var(--gold-subtle); color: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">AF</div>
+        <div>
+          <strong id="resetUserName" style="color: var(--text); font-size: 0.95rem;">User Name</strong>
+          <div id="resetUserMeta" style="color: var(--text-muted); font-size: 0.8rem;">username • Super Admin</div>
+        </div>
+      </div>
+
+      <form id="resetUserPasswordForm" class="admin-modal-form">
+        <input type="hidden" id="resetUserId">
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label class="form-label" for="resetNewPass" style="margin-bottom: 0;">New Password *</label>
+            <button type="button" id="btnGenRandomPass" style="background: none; border: none; color: var(--gold-light); font-size: 0.78rem; cursor: pointer; text-decoration: underline;">Generate Strong</button>
+          </div>
+          <div class="password-input-group">
+            <input type="password" id="resetNewPass" class="form-input" required minlength="6" placeholder="Min 6 characters">
+            <button type="button" class="btn-toggle-pass" data-target="resetNewPass" title="Show/Hide">👁️</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="resetConfirmPass">Confirm New Password *</label>
+          <div class="password-input-group">
+            <input type="password" id="resetConfirmPass" class="form-input" required minlength="6" placeholder="Confirm new password">
+            <button type="button" class="btn-toggle-pass" data-target="resetConfirmPass" title="Show/Hide">👁️</button>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <button type="submit" class="btn-admin" style="flex: 1; justify-content: center;">Save New Password</button>
+          <button type="button" class="btn-admin btn-admin-outline" id="cancelResetUserPassModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="admin-modal-backdrop" id="deleteConfirmModal">
+    <div class="admin-modal-card" style="max-width: 440px; text-align: center;">
+      <button class="modal-close" id="closeDeleteModal">&times;</button>
+      <div style="width: 56px; height: 56px; margin: 0 auto 1.25rem; border-radius: 50%; background: rgba(239, 68, 68, 0.15); color: #ef4444; display: flex; align-items: center; justify-content: center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          <line x1="10" y1="11" x2="10" y2="17"></line>
+          <line x1="14" y1="11" x2="14" y2="17"></line>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="deleteModalTitle" style="margin-bottom: 0.5rem;">Delete Inquiry?</h3>
+      <p id="deleteModalMessage" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.75rem;">
+        Are you sure you want to permanently delete this inquiry? This action cannot be undone.
+      </p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button type="button" class="btn-admin btn-admin-danger" id="confirmDeleteBtn" style="flex: 1; justify-content: center;">
+          <span>Confirm Delete</span>
+        </button>
+        <button type="button" class="btn-admin btn-admin-outline" id="cancelDeleteModal" style="flex: 1; justify-content: center;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="adminToast" class="admin-toast"></div>
+
+  <script src="../js/i18n.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300">
+  <clipPath id="uk-clip">
+    <rect width="600" height="300"/>
+  </clipPath>
+  <g clip-path="url(#uk-clip)">
+    <!-- Blue Field -->
+    <rect width="600" height="300" fill="#012169"/>
+    <!-- White Diagonals -->
+    <path d="M0,0 L600,300 M600,0 L0,300" stroke="#FFFFFF" stroke-width="60"/>
+    <!-- Red Diagonals -->
+    <path d="M0,0 L300,150 M600,0 L300,150 M600,300 L300,150 M0,300 L300,150" stroke="#C8102E" stroke-width="20"/>
+    <!-- White Cross -->
+    <path d="M300,0 v300 M0,150 h600" stroke="#FFFFFF" stroke-width="100"/>
+    <!-- Red Cross -->
+    <path d="M300,0 v300 M0,150 h600" stroke="#C8102E" stroke-width="60"/>
+  </g>
+</svg>
